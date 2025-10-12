@@ -3,7 +3,7 @@
 Our skilled team:
 - Radiant-ちゃん
 - Julek <3
-- Adaś :*
+- Adas :*
 - Krzyś >.<
-- Hipo :333
+- hipo :333
 - Dawid =^w^=
