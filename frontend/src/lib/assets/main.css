@@ -1,4 +1,6 @@
 body{
-    background: #3F5EFB;
-    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+background: #7340a3;
+background: radial-gradient(circle, rgba(115, 64, 163, 1) 0%, rgba(103, 85, 207, 1) 50%, rgba(63, 14, 161, 1) 100%);
+    justify-content: center;
+    display: flex;
 }
