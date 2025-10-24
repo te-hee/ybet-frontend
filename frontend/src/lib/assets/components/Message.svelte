@@ -16,41 +16,44 @@
 </div>
   <style>
     .main {
-    background: linear;
     color: #fff;
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     width: 600px;
-    min-height: 800px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    outline: 1px solid #fff;
-    gap: 3rem;
-   
+    align-items: start;
+    gap: 1rem;
   }
 
   .pfp{
     flex: 1;
     border-radius: 90%;
-    background-color: purple;
+    background-color: brown;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 50px;
+      max-height: 50px;
     width: 50px;
+      max-width: 50px;
+      outline: #7340a3 2px solid;
   }
 
   .my-message{
+    position: relative;
     flex: 9;
     display: flex;
     align-items: center;
-    background-color: blue;
+      padding: 0 1rem;
+      outline: 1px solid #fff;
+      border-radius: 1rem;
   }
   .time{
-    position:absolute;
-    bottom: 0; 
+      position:absolute;
+      bottom: -25px;
+      left: 5px;
   }
  
   
