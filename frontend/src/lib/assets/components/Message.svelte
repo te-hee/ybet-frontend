@@ -1,60 +1,88 @@
 <script>
-  export let id = 0
+  export let id = "0"
   export let message = "siema";
+  export let fromMe = false;
   const time = new Date();
   const hours = time.getHours()
   const minutes = time.getMinutes();
 </script>
 
-<div class="main">
-  <div class="my-message ur-message">
-    <h3>{message}</h3>
-    <span class="time">{hours} : {minutes}</span>
-  </div>
-  <div class="pfp"><span>{id}</span></div>
-  <!--someone message  -->
+<div class="main {fromMe ? 'left' : 'right'}">
+    {#if fromMe}
+        <div class="my-message">
+            <h3>{message}</h3>
+            <span class="time">{hours}:{minutes.toString().padStart(2, "0")}</span>
+        </div>
+        <div class="pfp"><span>{id}</span></div>
+    {:else}
+        <div class="pfp"><span>{id}</span></div>
+        <div class="ur-message">
+            <h3>{message}</h3>
+            <span class="time">{hours}:{minutes.toString().padStart(2, "0")}</span>
+        </div>
+    {/if}
 </div>
-  <style>
-    .main {
-    color: #fff;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    width: 600px;
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    gap: 1rem;
+
+<style>
+  .main {
+      color: #fff;
+      padding: 1rem;
+      border-radius: 1rem;
+      width: 1000px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 1rem auto;
   }
 
-  .pfp{
-    flex: 1;
-    border-radius: 90%;
-    background-color: brown;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-      max-height: 50px;
-    width: 50px;
-      max-width: 50px;
+  .left {
+      justify-content: flex-start;
+      flex-direction: row-reverse;
+  }
+
+  .right {
+      justify-content: flex-end;
+      flex-direction: row-reverse;
+  }
+
+  .pfp {
+      flex-shrink: 0;
+      border-radius: 50%;
+      background-color: brown;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      width: 50px;
       outline: #7340a3 2px solid;
   }
 
-  .my-message{
-    position: relative;
-    flex: 9;
-    display: flex;
-    align-items: center;
-      padding: 0 1rem;
-      outline: 1px solid #fff;
+  .my-message,
+  .ur-message {
+      position: relative;
+      padding: 0.75rem 1rem;
       border-radius: 1rem;
+      max-width: 70%;
+      word-wrap: break-word;
   }
-  .time{
-      position:absolute;
-      bottom: -25px;
+
+  .my-message {
+      background-color: #7340a3;
+      align-self: flex-end;
+  }
+
+  .ur-message {
+      background-color: #333;
+      align-self: flex-start;
+  }
+
+  .time {
+      position: absolute;
+      bottom: -20px;
       left: 5px;
+      font-size: 0.75rem;
+      opacity: 0.7;
   }
- 
-  
+
 </style>
+

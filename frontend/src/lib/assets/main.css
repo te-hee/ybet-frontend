@@ -1,7 +1,12 @@
 body{
-background: #7340a3;
-background: radial-gradient(circle, rgba(115, 64, 163, 1) 0%, rgba(103, 85, 207, 1) 50%, rgba(63, 14, 161, 1) 100%);
-    justify-content: center;
+    background: #0D0828;
+    background: linear-gradient(145deg, rgba(13, 8, 40, 1) 0%, rgba(49, 6, 88, 1) 100%);
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
     display: flex;
+    flex-direction: column;
+    padding: 2rem;
     font-family: 'JetBrains Mono', sans-serif;
+    height: 100vh;
 }
