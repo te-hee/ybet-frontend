@@ -1,6 +1,10 @@
 <script lang="ts">
     import sendIcon from "../icons/sendIcon.svg";
     import Message from "$lib/assets/components/Message.svelte";
+    import Axios from "axios"
+    import {onMount} from "svelte";
+    import {resolve} from "$app/paths";
+    import axios from "axios";
 
     type ChatMessage = {
         id: number;
@@ -8,23 +12,29 @@
         fromMe: boolean;
     }
 
+    function sendMessage(content: string){
+        axios.post("http://localhost:8080/messages", {
+           content: content,
+        })
+    }
+
     let message: string = "";
     let messages: ChatMessage[] = [];
 
-    function sendMessage() {
-        if(!message.trim()) return;
-
-        messages = [
-            ...messages,
-            {
-                id: message.length + 1,
-                text: message,
-                fromMe: true
-            }
-        ];
-
-        message = "";
-    }
+    // function sendMessage() {
+    //     if(!message.trim()) return;
+    //
+    //     messages = [
+    //         ...messages,
+    //         {
+    //             id: message.length + 1,
+    //             text: message,
+    //             fromMe: true
+    //         }
+    //     ];
+    //
+    //     message = "";
+    // }
 </script>
 
 <div class="chat">
@@ -38,12 +48,10 @@
             type="text"
             placeholder="Enter message..."
             bind:value={message}
-            on:keyup={(e) => e.key === "Enter" && sendMessage()}
+            on:keyup={(e) => e.key === "Enter" && sendMessage(message)}>
     />
 
-    <button class="btn" aria-label="Send message" on:click={sendMessage}>
-        <img src={sendIcon} alt="Send icon" />
-    </button>
+
 </div>
 
 <style>
