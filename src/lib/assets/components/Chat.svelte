@@ -18,6 +18,17 @@
     });
 </script>
 
-{#each messages as msg}
-    <Message message={msg.Content} />
-{/each}
+<div class="chat">
+    {#each messages as msg}
+        <Message message={msg.Content} id={msg.Uuid[0]}/>
+    {/each}
+</div>
+
+<style>
+    .chat{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+    }
+</style>

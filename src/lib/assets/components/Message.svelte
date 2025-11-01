@@ -7,7 +7,7 @@
   const minutes = time.getMinutes();
 </script>
 
-<div class="main {fromMe ? 'left' : 'right'}">
+<div class="main {fromMe ? 'right' : 'left'}">
     {#if fromMe}
         <div class="my-message">
             <h3>{message}</h3>
@@ -27,7 +27,6 @@
   .main {
       color: #fff;
       padding: 1rem;
-      border-radius: 1rem;
       width: 1000px;
       display: flex;
       flex-direction: column;
@@ -54,25 +53,31 @@
       justify-content: center;
       height: 50px;
       width: 50px;
-      outline: #7340a3 2px solid;
   }
 
   .my-message,
   .ur-message {
+      border-radius: 0.5rem;
       position: relative;
-      padding: 0.75rem 1rem;
-      border-radius: 1rem;
+      padding: 0 1rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       max-width: 70%;
       word-wrap: break-word;
+      font-size: .75rem;
   }
 
   .my-message {
-      background-color: #7340a3;
+      border: 1px solid #38125A;
       align-self: flex-end;
+      background: #25083F;
   }
 
   .ur-message {
-      background-color: #333;
+      border: 1px solid #302173;
+      background: #231251;
       align-self: flex-start;
   }
 

@@ -5,5 +5,5 @@
 </script>
 
 
-<Chat limit="5"/>
+<Chat limit="100"/>
 <Input />

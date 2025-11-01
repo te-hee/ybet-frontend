@@ -1,4 +1,6 @@
 body{
+    padding: 0;
+    margin: 0;
     background: #0D0828;
     background: linear-gradient(145deg, rgba(13, 8, 40, 1) 0%, rgba(49, 6, 88, 1) 100%);
     box-sizing: border-box;
@@ -6,7 +8,6 @@ body{
     justify-content: space-between;
     display: flex;
     flex-direction: column;
-    padding: 2rem;
     font-family: 'JetBrains Mono', sans-serif;
     height: 100vh;
 }

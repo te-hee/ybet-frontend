@@ -19,20 +19,6 @@
     let message: string = "";
     let messages: ChatMessage[] = [];
 
-    // function sendMessage() {
-    //     if(!message.trim()) return;
-    //
-    //     messages = [
-    //         ...messages,
-    //         {
-    //             id: message.length + 1,
-    //             text: message,
-    //             fromMe: true
-    //         }
-    //     ];
-    //
-    //     message = "";
-    // }
 </script>
 
 <div class="chat">
@@ -52,10 +38,18 @@
 
 <style>
     .main {
+        position: fixed;
+        bottom: 1rem;
         display: flex;
         align-items: center;
         gap: 0.5rem;
         width: 60%;
+        opacity: 25%;
+        transition:  .25s;
+    }
+
+    .main:hover {
+        opacity: 1;
     }
 
     input {
