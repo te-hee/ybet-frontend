@@ -1,22 +1,23 @@
-<script>
-    import Message from "$lib/assets/components/Message.svelte";
-    import axios from "axios";
-    import { onMount } from "svelte"
+<script lang="ts">
+    import { onMount } from 'svelte';
+    import Message from './Message.svelte';
 
-    let messages = [];
-    async function getMessages() {
+    export let limit: number = 1;
 
+    interface Message {
+        Uuid: string;
+        Content: string;
+        Timestamp: number;
     }
 
-    onMount(() => {
-        console.log("duh");
-        getMessages();
-    })
-
+    let messages: Message[] = [];
+    onMount(async () => {
+        const res = await fetch(`http://localhost:8080/messages?limit=${limit}`);
+        const data = await res.json();
+        messages = data.Messages;
+    });
 </script>
 
-<div>
-    {#each messages as msg, i}
-        <Message messages={msg.Content} id="{1}"/>
-    {/each}
-</div>
+{#each messages as msg}
+    <Message message={msg.Content} />
+{/each}
