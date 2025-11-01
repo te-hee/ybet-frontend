@@ -1,9 +1,5 @@
 <script lang="ts">
-    import sendIcon from "../icons/sendIcon.svg";
     import Message from "$lib/assets/components/Message.svelte";
-    import Axios from "axios"
-    import {onMount} from "svelte";
-    import {resolve} from "$app/paths";
     import axios from "axios";
 
     type ChatMessage = {
@@ -16,6 +12,8 @@
         axios.post("http://localhost:8080/messages", {
            content: content,
         })
+
+        message = "";
     }
 
     let message: string = "";
@@ -49,8 +47,6 @@
             placeholder="Enter message..."
             bind:value={message}
             on:keyup={(e) => e.key === "Enter" && sendMessage(message)}>
-    />
-
 
 </div>
 
