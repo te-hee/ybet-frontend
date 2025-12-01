@@ -22,7 +22,6 @@
         flex-wrap: wrap;
     }
     .left{
-        max-height: 100%;
         flex: 10;
     }
     .right{

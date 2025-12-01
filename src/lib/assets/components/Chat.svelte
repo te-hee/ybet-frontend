@@ -26,10 +26,10 @@
 
 <style>
     .chat{
+        max-height: 96vh;
+        overflow-y: auto;        /* scroll if messages exceed max height */
         display: flex;
-        justify-content: flex-end;
         flex-direction: column;
-        overflow-y: scroll;
         padding: 1rem;
     }
 </style>
