@@ -38,12 +38,11 @@
 
 <style>
     .main {
-        position: fixed;
         bottom: 1rem;
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        width: 60%;
+        width: 100%;
         opacity: 25%;
         transition:  .25s;
     }
@@ -53,32 +52,13 @@
     }
 
     input {
-        background-color: #280A40;
-        border: 3px solid #3F1463;
-        color: #573574;
+        background-color: #8E8E8E;
+        color: #ffffff;
         flex: 1;
         padding: 0.5rem;
-        border-radius: 8px;
     }
 
     input:focus {
         outline: none;
-    }
-
-    .btn {
-        background: #573574;
-        border: none;
-        border-radius: 15%;
-        cursor: pointer;
-        padding: 0.5rem;
-    }
-
-    .btn img {
-        width: 20px;
-        height: 20px;
-    }
-
-    .btn:hover {
-        opacity: 0.8;
     }
 </style>

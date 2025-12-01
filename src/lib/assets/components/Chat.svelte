@@ -26,9 +26,10 @@
 
 <style>
     .chat{
-        height: 100%;
         display: flex;
+        justify-content: flex-end;
         flex-direction: column;
         overflow-y: scroll;
+        padding: 1rem;
     }
 </style>
