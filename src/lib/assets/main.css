@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background: #000;
+    font-family: 'Sans Linear Bold';
+    display: flex;           /* optional */
+    flex-direction: column;  /* optional */
+}
