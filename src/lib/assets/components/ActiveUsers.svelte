@@ -12,23 +12,5 @@
 </div>
 
 <style>
-    .users {
-        background: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-    }
-
-    h1{
-        font-size: 4rem;
-        flex: 1;
-    }
-    .users > div{
-        flex: 9;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
+    @import '../styles/activeUsers.scss';
 </style>

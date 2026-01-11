@@ -25,11 +25,5 @@
 </div>
 
 <style>
-    .chat{
-        max-height: 96vh;
-        overflow-y: auto;        /* scroll if messages exceed max height */
-        display: flex;
-        flex-direction: column;
-        padding: 1rem;
-    }
+    @import '../styles/chat.scss';
 </style>

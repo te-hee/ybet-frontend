@@ -37,28 +37,5 @@
 </div>
 
 <style>
-    .main {
-        bottom: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        width: 100%;
-        opacity: 25%;
-        transition:  .25s;
-    }
-
-    .main:hover {
-        opacity: 1;
-    }
-
-    input {
-        background-color: #8E8E8E;
-        color: #ffffff;
-        flex: 1;
-        padding: 0.5rem;
-    }
-
-    input:focus {
-        outline: none;
-    }
+    @import '../styles/input.scss';
 </style>
