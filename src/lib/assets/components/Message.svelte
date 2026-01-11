@@ -17,34 +17,6 @@
 </div>
 
 <style>
-  .main {
-      width: 100%;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-  }
-
-  .message {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-
-  }
-
-  .not-time {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-
-  .username-msg{
-     font-weight: bolder;
-  }
-
-  .time{
-      color: gray;
-      font-size: 80%;
-  }
+    @import '../styles/message.scss';
 </style>
 
