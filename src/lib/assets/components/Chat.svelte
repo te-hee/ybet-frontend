@@ -5,22 +5,22 @@
     export let limit: number = 1;
 
     interface Message {
-        Uuid: string;
-        Content: string;
-        Timestamp: number;
+        uuid: string;
+        content: string;
+        timestamp: number;
     }
 
     let messages: Message[] = [];
     onMount(async () => {
         const res = await fetch(`http://localhost:8080/messages?limit=${limit}`);
         const data = await res.json();
-        messages = data.Messages;
+        messages = data.messages;
     });
 </script>
 
 <div class="chat">
     {#each messages as msg}
-        <Message message={msg.Content} id={msg.Uuid[0]}/>
+        <Message message={msg.content} id={msg.uuid[0]}/>
     {/each}
 </div>
 
