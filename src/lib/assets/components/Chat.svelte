@@ -2,6 +2,8 @@
     import { onMount, onDestroy } from 'svelte';
     import Message from './Message.svelte';
     import { token } from '$lib/stores/auth';
+    import axios from 'axios';
+    import { get } from 'svelte/store';
 
     export let limit: number = 10;
 
@@ -15,6 +17,43 @@
 
     let messages: ChatMessage[] = [];
     let socket: WebSocket;
+
+    async function handleEdit(event: CustomEvent<{ id: string, message: string }>) {
+        const { id, message } = event.detail;
+        const newContent = prompt("Edit message:", message);
+        if (newContent !== null && newContent !== message) {
+            const $token = get(token);
+            try {
+                await axios.patch("/api/messages", {
+                    message_id: id,
+                    content: newContent
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${$token}`
+                    }
+                });
+            } catch (err) {
+                console.error("Error editing message:", err);
+            }
+        }
+    }
+
+    async function handleDelete(event: CustomEvent<{ id: string }>) {
+        const { id } = event.detail;
+        if (confirm("Are you sure you want to delete this message?")) {
+            const $token = get(token);
+            try {
+                await axios.delete("/api/messages", {
+                    data: { message_id: id },
+                    headers: {
+                        Authorization: `Bearer ${$token}`
+                    }
+                });
+            } catch (err) {
+                console.error("Error deleting message:", err);
+            }
+        }
+    }
 
     onMount(() => {
         socket = new WebSocket("ws://localhost:8081/ws");
@@ -70,6 +109,9 @@
         <Message
                 message={msg.content}
                 id={msg.message_id}
-                timestamp={msg.timestamp}/>
+                timestamp={msg.timestamp}
+                on:edit={handleEdit}
+                on:delete={handleDelete}
+        />
     {/each}
 </div>

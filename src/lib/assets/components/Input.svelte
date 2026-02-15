@@ -8,9 +8,17 @@
         fromMe: boolean;
     }
 
+    import { token } from '$lib/stores/auth';
+    import { get } from 'svelte/store';
+
     function sendMessage(content: string){
-        axios.post("http://localhost:8080/messages", {
+        const $token = get(token);
+        axios.post("/api/messages", {
            content: content,
+        }, {
+            headers: {
+                Authorization: `Bearer ${$token}`
+            }
         })
 
         message = "";

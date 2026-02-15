@@ -6,7 +6,14 @@ export default defineConfig({
   server: {
     host: true,
     allowedHosts: [
-      '8a95bc6fb80f.ngrok-free.app', // ❌ remove the extra space!
+      '8a95bc6fb80f.ngrok-free.app',
     ],
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
   },
 });
