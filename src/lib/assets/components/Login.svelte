@@ -21,11 +21,13 @@
         return res.json();
       }).then(data => {
         token.set(data.token);
-        console.log("JWT:", data.token)
+        console.log("JWT:", data.token);
+        localStorage.setItem("jwt", data.token);
       }).catch(err => {
         console.error(err);
       })
     }
+
 </script>
 
 <div class="login-card">
