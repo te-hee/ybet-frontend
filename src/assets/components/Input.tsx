@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../authContext.tsx';
 
+import '../styles/input.scss'
+
 export default function Input() {
     const [message, setMessage] = useState<string>("");
     const { token } = useAuth();
@@ -15,7 +17,7 @@ export default function Input() {
             }, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-            setMessage(""); // [cite: 20]
+            // setMessage(""); // [cite: 20]
         } catch (err) {
             console.error(err);
         }
