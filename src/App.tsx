@@ -5,6 +5,7 @@ import Chat from './assets/components/Chat.tsx';
 import Input from './assets/components/Input.tsx';
 
 import './App.css'
+import ActiveUsers from "./assets/components/ActiveUsers.tsx";
 
 
 const AppContent: React.FC = () => {
@@ -15,14 +16,15 @@ const AppContent: React.FC = () => {
             {!token ? (
                 <Login />
             ) : (
-                <div style={{
-                    backgroundColor: 'red'
-                }}>
-                    <div style={{ flexGrow: 1, overflowY: 'auto' }}>
-                        <Chat limit={20} />
+                <>
+                    <div className='left'>
+                        <Chat limit={20}/>
+                        <Input/>
                     </div>
-                    <Input />
-                </div>
+                    <div className='right'>
+                        <ActiveUsers users={['ja', 'on']}></ActiveUsers>
+                    </div>
+                </>
             )}
         </main>
     );

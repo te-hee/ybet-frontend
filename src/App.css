@@ -8,16 +8,20 @@ body {
     min-height: 100vh;
     background: #000;
     font-family: 'Sans Linear Bold', serif;
-    display: flex;           /* optional */
-    flex-direction: column;  /* optional */
 }
 
-main{
+main {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.left{
+    flex: 10;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 100%;
-    background: #1e1e2f;
+    justify-content: space-between;
+}
+.right{
+    flex: 2;
 }

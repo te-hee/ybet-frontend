@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import {useAuth} from "../../authContext.tsx";
 
+import '../styles/login.scss'
+
 interface LoginResponse {
     token: string;
 }

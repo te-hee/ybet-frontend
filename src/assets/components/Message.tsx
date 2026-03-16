@@ -1,3 +1,5 @@
+import '../styles/messages.scss'
+
 interface MessageProps {
     id?: string;
     message?: string;

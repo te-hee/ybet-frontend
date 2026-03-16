@@ -3,6 +3,8 @@ import axios from 'axios';
 import Message from './Message';
 import { useAuth } from '../../authContext.tsx';
 
+import '../styles/chat.scss'
+
 interface ChatMessage {
     message_id: string;
     user_id: string;

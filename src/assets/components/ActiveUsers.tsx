@@ -1,4 +1,4 @@
-import '../styles/activeUsers.scss';
+import '../styles/activeUsers.scss'
 
 interface ActiveUsersProps {
     users: string[];
