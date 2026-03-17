@@ -12,7 +12,7 @@ export default function Login() {
     const { setToken } = useAuth();
 
     const login = async () => {
-        console.log(username);;
+        console.log(username);
         try {
             const res = await fetch('http://localhost:8080/login', {
                 method: 'POST',
