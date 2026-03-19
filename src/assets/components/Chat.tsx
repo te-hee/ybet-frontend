@@ -5,6 +5,8 @@ import { useAuth } from '../../authContext.tsx';
 
 import '../styles/chat.scss'
 
+const message_api_url = '/api/messages';
+
 interface ChatMessage {
     message_id: string;
     user_id: string;
@@ -76,7 +78,7 @@ export default function Chat({ limit = 10 }: ChatProps) {
         const newContent = prompt("Edit message:", message);
         if (newContent !== null && newContent !== message) {
             try {
-                await axios.patch("/api/messages", {
+                await axios.patch(message_api_url, {
                     message_id: id,
                     content: newContent
                 }, {
@@ -91,7 +93,7 @@ export default function Chat({ limit = 10 }: ChatProps) {
     const handleDelete = async (id: string) => {
         if (window.confirm("Are you sure you want to delete this message?")) {
             try {
-                await axios.delete("/api/messages", {
+                await axios.delete(message_api_url, {
                     data: { message_id: id },
                     headers: { Authorization: `Bearer ${token}` }
                 });
@@ -106,7 +108,8 @@ export default function Chat({ limit = 10 }: ChatProps) {
             {messages.map((msg) => (
                 <Message
                     key={msg.message_id}
-                    id={msg.username}
+                    id={msg.message_id}
+                    username={msg.username}
                     message={msg.content}
                     timestamp={msg.timestamp}
                     onEdit={handleEdit}

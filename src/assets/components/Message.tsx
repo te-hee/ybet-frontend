@@ -3,20 +3,21 @@ import '../styles/messages.scss'
 interface MessageProps {
     id?: string;
     message?: string;
+    username?: string;
     timestamp: number;
     onEdit: (id: string, message: string) => void;
     onDelete: (id: string) => void;
 }
 
-export default function Message({ id = "0", message = "", timestamp, onEdit, onDelete }: MessageProps) {
-    const time = new Date(timestamp * 1000); // [cite: 11]
+export default function Message({ id = "0", message = "", username = '', timestamp, onEdit, onDelete }: MessageProps) {
+    const time = new Date(timestamp * 1000);
     const hours = time.getHours();
     const minutes = time.getMinutes();
 
     return (
         <div className="message">
             <div className="not-time">
-                <span className="username-msg">{id}:</span>
+                <span className="username-msg">{username}:</span>
                 <span>{message}</span>
                 <span className="actions">
                     <a href="#" onClick={(e) => { e.preventDefault(); onEdit(id, message); }}>edit</a>
