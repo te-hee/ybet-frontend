@@ -17,7 +17,7 @@ export default function Input() {
             }, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-            // setMessage(""); // [cite: 20]
+            setMessage("");
         } catch (err) {
             console.error(err);
         }

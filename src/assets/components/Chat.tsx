@@ -5,6 +5,8 @@ import { useAuth } from '../../authContext.tsx';
 
 import '../styles/chat.scss'
 
+const message_api_url = '/api/messages';
+
 interface ChatMessage {
     message_id: string;
     user_id: string;
@@ -22,7 +24,12 @@ export default function Chat({ limit = 10 }: ChatProps) {
     const { token } = useAuth();
 
     useEffect(() => {
-        const socket = new WebSocket("ws://localhost:8081/ws"); // [cite: 38]
+        if (!token) return;
+
+        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        const wsUrl = `${protocol}//${window.location.host}/ws-proxy`;
+
+        const socket = new WebSocket(wsUrl, [token]);
 
         socket.onopen = () => console.log("WS connected");
 
@@ -41,41 +48,41 @@ export default function Chat({ limit = 10 }: ChatProps) {
                             m.message_id === data.payload.message_id
                                 ? { ...m, content: data.payload.content }
                                 : m
-                        ); // [cite: 40, 41]
+                        );
                         break;
                     case "deleteMessage":
                         updatedMessages = updatedMessages.filter(
                             m => m.message_id !== data.payload.message_id
-                        ); // [cite: 41, 42]
+                        );
                         break;
                     default:
                         break;
                 }
 
                 if (updatedMessages.length > limit) {
-                    return updatedMessages.slice(-limit); // [cite: 42]
+                    return updatedMessages.slice(-limit);
                 }
                 return updatedMessages;
             });
         };
 
-        socket.onerror = (err: Event) => console.error("WebSocket error:", err); // [cite: 43]
-        socket.onclose = () => console.log("WS disconnected"); // [cite: 44]
+        socket.onerror = (err: Event) => console.error("WebSocket error:", err);
+        socket.onclose = () => console.log("WS disconnected");
 
         return () => {
-            socket.close(); // [cite: 45]
+            socket.close();
         };
-    }, [limit]);
+    }, [limit, token]);
 
     const handleEdit = async (id: string, message: string) => {
-        const newContent = prompt("Edit message:", message); // [cite: 29]
+        const newContent = prompt("Edit message:", message);
         if (newContent !== null && newContent !== message) {
             try {
-                await axios.patch("/api/messages", {
+                await axios.patch(message_api_url, {
                     message_id: id,
                     content: newContent
                 }, {
-                    headers: { Authorization: `Bearer ${token}` } // [cite: 30, 31]
+                    headers: { Authorization: `Bearer ${token}` }
                 });
             } catch (err) {
                 console.error("Error editing message:", err);
@@ -84,11 +91,11 @@ export default function Chat({ limit = 10 }: ChatProps) {
     };
 
     const handleDelete = async (id: string) => {
-        if (window.confirm("Are you sure you want to delete this message?")) { // [cite: 34]
+        if (window.confirm("Are you sure you want to delete this message?")) {
             try {
-                await axios.delete("/api/messages", {
+                await axios.delete(message_api_url, {
                     data: { message_id: id },
-                    headers: { Authorization: `Bearer ${token}` } // [cite: 35]
+                    headers: { Authorization: `Bearer ${token}` }
                 });
             } catch (err) {
                 console.error("Error deleting message:", err);
@@ -102,6 +109,7 @@ export default function Chat({ limit = 10 }: ChatProps) {
                 <Message
                     key={msg.message_id}
                     id={msg.message_id}
+                    username={msg.username}
                     message={msg.content}
                     timestamp={msg.timestamp}
                     onEdit={handleEdit}
