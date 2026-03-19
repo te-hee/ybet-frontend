@@ -14,5 +14,7 @@ npm install
 ```
 
 ## Run
-```npm run dev```
-```http://localhost:5173```
+```bash
+npm run dev
+```
+Enter the `http://localhost:5173`
