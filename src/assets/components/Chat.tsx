@@ -26,6 +26,31 @@ export default function Chat({ limit = 10 }: ChatProps) {
     useEffect(() => {
         if (!token) return;
 
+        const loadHistory = async () => {
+            try {
+                const response = await axios.get('/api/messages', {
+                    params: { limit: limit },
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+
+                console.log("API Response:", response.data);
+
+                const incomingMessages = Array.isArray(response.data)
+                    ? response.data
+                    : (response.data.messages || []);
+
+                setMessages(incomingMessages.slice(-limit));
+            } catch (err) {
+                console.error("Failed to load history", err);
+            }
+        };
+
+        loadHistory();
+    }, [limit, token]);
+
+    useEffect(() => {
+        if (!token) return;
+
         const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
         const wsUrl = `${protocol}//${window.location.host}/ws-proxy`;
 
