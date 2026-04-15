@@ -1,0 +1,199 @@
+.msg-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 4px 8px;
+    border-radius: var(--radius);
+    position: relative;
+    transition: background 0.1s;
+}
+
+.msg-row:hover {
+    background: var(--surface2);
+}
+
+.msg-row:hover .msg-actions {
+    opacity: 1;
+}
+
+@keyframes msg-in {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.msg-row.new {
+    animation: msg-in 0.2s ease both;
+}
+
+.msg-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background: var(--surface3);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-family: var(--font-head);
+    font-weight: 700;
+    color: var(--text-muted);
+    user-select: none;
+}
+
+.msg-avatar.own {
+    color: #000;
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.msg-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.msg-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 2px;
+}
+
+.msg-username {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text);
+}
+
+.msg-username.own {
+    color: var(--accent);
+}
+
+.msg-time {
+    font-size: 10px;
+    color: var(--text-faint);
+    font-weight: 300;
+}
+
+.msg-text {
+    color: var(--text);
+    font-size: 13px;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+.msg-text.deleted {
+    color: var(--text-faint);
+    font-style: italic;
+}
+
+.msg-text.edited::after {
+    content: ' (edited)';
+    color: var(--text-faint);
+    font-size: 11px;
+}
+
+.msg-actions {
+    position: absolute;
+    right: 8px;
+    top: 4px;
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.msg-action-btn {
+    padding: 3px 7px;
+    background: var(--surface3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    cursor: pointer;
+    transition: background 0.1s, color 0.1s, border-color 0.1s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.msg-action-btn:hover {
+    background: var(--surface2);
+    color: var(--text);
+    border-color: var(--border-hi);
+}
+
+.msg-action-btn.delete:hover {
+    color: var(--red);
+    border-color: var(--red);
+    background: #ff5f7e10;
+}
+
+.msg-action-btn.edit:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: #7bffa010;
+}
+
+.msg-edit-form {
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.msg-edit-input {
+    flex: 1;
+    background: var(--surface3);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding: 5px 10px;
+    outline: none;
+    box-shadow: 0 0 0 2px #7bffa015;
+}
+
+.msg-edit-hint {
+    font-size: 10px;
+    color: var(--text-faint);
+    margin-top: 3px;
+}
+
+.msg-edit-btn {
+    padding: 5px 10px;
+    border-radius: var(--radius);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    cursor: pointer;
+    border: 1px solid;
+    transition: opacity 0.15s;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.msg-edit-btn.save {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+    font-weight: 600;
+}
+
+.msg-edit-btn.cancel {
+    background: transparent;
+    color: var(--text-muted);
+    border-color: var(--border);
+}
+
+.msg-edit-btn:hover {
+    opacity: 0.8;
+}
