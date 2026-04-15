@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useAuth } from '../../authContext.tsx';
+import { useAuth } from '../authContext.tsx';
 
-import '../styles/input.scss'
+import '../assets/styles/input.scss'
 
 export default function Input() {
     const [message, setMessage] = useState<string>("");

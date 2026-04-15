@@ -1,4 +1,4 @@
-import '../styles/messages.scss'
+import '../assets/styles/messages.scss'
 
 interface MessageProps {
     id?: string;

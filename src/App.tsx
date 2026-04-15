@@ -1,11 +1,11 @@
 import React from 'react';
 import { AuthProvider, useAuth } from './authContext.tsx';
-import Login from './assets/components/Login.tsx';
-import Chat from './assets/components/Chat.tsx';
-import Input from './assets/components/Input.tsx';
+import Login from './components/Login.tsx';
+import ChatPage from './components/ChatPage.tsx';
+import Input from './components/Input.tsx';
 
 import './App.css'
-import ActiveUsers from "./assets/components/ActiveUsers.tsx";
+import ActiveUsers from "./components/ActiveUsers.tsx";
 
 
 const AppContent: React.FC = () => {
@@ -18,7 +18,7 @@ const AppContent: React.FC = () => {
             ) : (
                 <>
                     <div className='left'>
-                        <Chat limit={20}/>
+                        <ChatPage limit={20}/>
                         <Input/>
                     </div>
                     <div className='right'>

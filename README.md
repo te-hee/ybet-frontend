@@ -1,5 +1,5 @@
 # YBET - frontend
-> Frontend written for YBET (E2EE Chat app)
+> Frontend written for YBET (E2EE ChatPage app)
 
 ## Tech Stack
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#)

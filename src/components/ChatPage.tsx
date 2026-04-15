@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Message from './Message';
-import { useAuth } from '../../authContext.tsx';
+import Message from './Message.tsx';
+import { useAuth } from '../authContext.tsx';
 
-import '../styles/chat.scss'
+import '../assets/styles/chat.scss'
 
 const message_api_url = '/api/messages';
 
@@ -19,7 +19,7 @@ interface ChatProps {
     limit?: number;
 }
 
-export default function Chat({ limit = 10 }: ChatProps) {
+export default function ChatPage({ limit = 10 }: ChatProps) {
     const [messages, setMessages] = useState<ChatMessage[]>([]);
     const { token } = useAuth();
 
