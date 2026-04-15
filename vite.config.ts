@@ -12,16 +12,15 @@ export default defineConfig({
             '/api': {
                 target: 'http://localhost:8080',
                 changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/api/, '')
+                // rewrite: (path) => path.replace(/^\/api/, '')
             },
             '/ws-proxy': {
                 target: 'ws://localhost:8081',
                 ws: true,
                 rewrite: (path) => path.replace(/^\/ws-proxy/, '/ws'),
                 configure: (proxy, _options) => {
-                    proxy.on('proxyReqWs', (proxyReq, req, socket, options, head) => {
+                    proxy.on('proxyReqWs', (proxyReq, req, _socket, _options, _head) => {
                         const token = req.headers['sec-websocket-protocol'];
-
                         if (token) {
                             proxyReq.setHeader('Authorization', `Bearer ${token}`);
                             proxyReq.removeHeader('sec-websocket-protocol');
